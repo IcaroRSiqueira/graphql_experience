@@ -75,10 +75,14 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    amq-protocol (2.3.2)
     ast (2.4.2)
     base64 (0.2.0)
     bigdecimal (3.1.6)
     builder (3.2.4)
+    bunny (2.22.0)
+      amq-protocol (~> 2.3, >= 2.3.1)
+      sorted_set (~> 1, >= 1.0.2)
     byebug (11.1.3)
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
@@ -185,8 +189,13 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
+    rbtree (0.4.6)
     rdoc (6.6.2)
       psych (>= 4.0.0)
+    redis (5.1.0)
+      redis-client (>= 0.17.0)
+    redis-client (0.21.0)
+      connection_pool
     regexp_parser (2.9.0)
     reline (0.4.3)
       io-console (~> 0.5)
@@ -235,6 +244,19 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
+    serverengine (2.0.7)
+      sigdump (~> 0.2.2)
+    set (1.1.0)
+    sigdump (0.2.5)
+    sneakers (2.11.0)
+      bunny (~> 2.12)
+      concurrent-ruby (~> 1.0)
+      rake
+      serverengine (~> 2.0.5)
+      thor
+    sorted_set (1.0.3)
+      rbtree
+      set (~> 1.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -260,14 +282,17 @@ PLATFORMS
 DEPENDENCIES
   debug
   factory_bot_rails
+  json
   pry
   pry-byebug
   puma (~> 6.0)
   rails (= 7.1.2)
+  redis
   rspec-rails
   rubocop
   rubocop-rails
   rubocop-rspec
+  sneakers
   sprockets-rails (~> 3.4.2)
   tzinfo-data
 
