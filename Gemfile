@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.3'
 
+gem 'graphql'
 gem 'json'
 gem 'puma', '~> 6.0'
 gem 'rails', '7.1.2'
@@ -23,3 +24,4 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
 end
+gem "graphiql-rails", group: :development
