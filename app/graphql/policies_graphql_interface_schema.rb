@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GraphqlExperienceSchema < GraphQL::Schema
+class PoliciesGraphqlInterfaceSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

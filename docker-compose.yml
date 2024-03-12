@@ -6,6 +6,8 @@ services:
     networks:
       - rabbitmq_network
     working_dir: /app
+    tty: true
+    stdin_open: true
     build:
       context: .
     entrypoint: "sh docker-entrypoint.sh"
