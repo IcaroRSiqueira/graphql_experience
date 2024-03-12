@@ -2,30 +2,31 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
-      argument :id, ID, required: true, description: "ID of the object."
+    field :policy, Types::PolicyType, null: false, description: "Fetches an policy information given its ID" do
+      argument :policy_id, ID, required: true, description: "ID of the object."
     end
 
-    def node(id:)
-      context.schema.object_from_id(id, context)
-    end
-
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
-    end
-
-    def nodes(ids:)
-      ids.map { |id| context.schema.object_from_id(id, context) }
-    end
-
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def policy(policy_id:)
+      #TODO: call api rest to fetch policy information
+      if policy_id.to_i == 1
+        {
+          id: 1,
+          data_emissao: '2024-01-01',
+          data_fim_cobertura: '2025-01-01',
+          segurado: {
+            nome: 'Joao Silva',
+            cpf: '001.002.003-90'
+          },
+          veiculo: {
+            marca: 'Fiat',
+            modelo: 'Uno 1.0',
+            ano: '1996',
+            placa: 'ABC-1234'
+          }
+        }
+      else
+        nil
+      end
     end
   end
 end
